@@ -35,32 +35,38 @@ public class TextUserInterface {
             getUserInput();
 
             switch (userChoice) {
-                case 1 -> {
+                case 1:
                     displayStoreProducts();
                     storeProductsMenu();
                     getUserInput();
                     innerChoice();
-                }
-                case 2 -> showCart();
-                case 0 -> System.exit(0);
-                default -> {
-                }
+                    break;
+                case 2:
+                    showCart();
+                    break;
+                case 0:
+                    System.exit(0);
+                    break;
+                default:
+
+                    break;
             }
         } while (userChoice != 0);
     }
 
     private void innerChoice() {
         switch (userChoice) {
-            case 1 -> {
+            case 1:
                 addProductToCart();
                 showCart();
-            }
-            case 2 -> {
+                break;
+            case 2:
                 removeProductFromCart();
                 showCart();
-            }
-            default -> {
-            }
+                break;
+            default:
+
+                break;
         }
     }
 

@@ -3,6 +3,7 @@ package ru.geekbrains.Homeworks.Homework1.Shop;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Shop {
     private List<Product> products;
@@ -18,7 +19,7 @@ public class Shop {
 
     // Метод должен вернуть отсортированный по возрастанию по цене список продуктов
     public List<Product> sortProductsByPrice() {
-        return products.stream().sorted(Comparator.comparingInt(Product::getCost)).toList();
+        return products.stream().sorted(Comparator.comparingInt(Product::getCost)).collect(Collectors.toList());
     }
 
     // Метод должен вернуть самый дорогой продукт

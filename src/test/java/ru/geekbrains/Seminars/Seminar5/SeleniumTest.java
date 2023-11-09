@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class SeleniumTest {
@@ -34,6 +36,28 @@ public class SeleniumTest {
         webDriver.quit();
     }
 
+    @Test
+    void seleniumTwoTest() throws InterruptedException {
+        WebDriver webDriver = new ChromeDriver();
+        webDriver.get("https://www.google.com/");
+        WebElement webElement = webDriver.findElement(By.name("q"));
+        webElement.sendKeys("Selenium");
+        webElement.submit();
+
+        List<WebElement> seleniumElement = webDriver.findElements(By.cssSelector("div"));
+        boolean f = false;
+        for (WebElement element : seleniumElement) {
+            if (element.getText().contains("https://www.selenium.dev")) {
+                f = true;
+                break;
+            }
+        }
+        assertThat(f).isTrue();
+
+        Thread.sleep(1000);
+        webDriver.quit();
+    }
+
     /**
      * Нужно написать сквозной тест с использованием Selenium, который авторизует пользователя на
      * сайте https://www.saucedemo.com/.
@@ -44,7 +68,7 @@ public class SeleniumTest {
      * отображаются продукты (productsLabel.getText() = "Products").
      */
     @Test
-    void authorizationTest(){
+    void authorizationTest() {
         WebDriver webDriver = new ChromeDriver();
         webDriver.get("https://www.saucedemo.com/");
 
